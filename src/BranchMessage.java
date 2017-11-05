@@ -45,7 +45,7 @@ public class BranchMessage extends AnAction {
     }
 
     public void runScript() throws IOException, InterruptedException {
-        String path = "C:\\Users\\tushar.pandey\\IdeaProjects\\learning_IntelliPlugin\\checkForPull.sh";
+        String path = "D:\\intellij_plugin_development\\checkForPull.sh";
         Runtime.getRuntime().exec("cmd /c start " + path);
     }
 }
