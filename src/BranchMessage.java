@@ -15,6 +15,9 @@ public class BranchMessage extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
+        
+        //hello world
+        
         try {
             runScript();
         } catch (IOException e1) {
