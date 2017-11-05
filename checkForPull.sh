@@ -3,7 +3,6 @@
 readonly dirName=D:\intellij_plugin_development\
 cd $dirName
 
-
 GITNAME="intellijPlugin"
 
 if [ "`git log --pretty=%H ...refs/heads/master^ | head -n 1`" = "`git ls-remote origin -h refs/heads/master |cut -f1`" ] ; then
@@ -19,8 +18,7 @@ if [[ `git status --porcelain` ]]; then
     statustxt="uncommited"
 fi
 
-
 echo "$status git_status_$GITNAME - $statustxt"
 
 echo Press Enter...
-rea
+read
