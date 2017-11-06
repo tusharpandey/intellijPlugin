@@ -9,12 +9,15 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.util.NotNullLazyValue;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.Arrays;
+import java.util.concurrent.Executors;
 
 public class BranchMessage extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
+        String valueReturned = null;
         try {
             runScript();
         } catch (IOException e1) {
@@ -22,6 +25,7 @@ public class BranchMessage extends AnAction {
         } catch (InterruptedException e1) {
             e1.printStackTrace();
         }
+        System.out.println("return value : " + valueReturned);
         NotNullLazyValue<NotificationGroup> NOTIFICATION_GROUP = new NotNullLazyValue<NotificationGroup>() {
             @NotNull
             @Override
@@ -44,8 +48,15 @@ public class BranchMessage extends AnAction {
                         ModalityState.NON_MODAL);
     }
 
-    public void runScript() throws IOException, InterruptedException {
-        String path = "D:\\intellij_plugin_development\\checkForPull.sh";
-        Runtime.getRuntime().exec("cmd /c start " + path);
+    public String runScript() throws IOException, InterruptedException {
+        System.out.println("return value : hellow rodl");
+        String path = "D:\\intellij_plugin_development\\checkForPull\\checkForPull.sh";
+        String command = "cmd /c start " + path;
+        Process process = Runtime.getRuntime().exec(command);
+        process.waitFor();
+        java.util.Scanner s = new java.util.Scanner(process.getInputStream());
+        String data = s.hasNext() ? s.next() : "";
+        System.out.println("return value : " + data);
+        return data;
     }
 }

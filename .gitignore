@@ -1,4 +1,5 @@
 /.idea
 checkForPull.sh
+*checkForPull*
 *.sh*
 .idea/workspace.xml
